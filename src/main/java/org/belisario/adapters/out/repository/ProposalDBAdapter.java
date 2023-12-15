@@ -37,6 +37,7 @@ public class ProposalDBAdapter implements ProposalDBPort {
     }
 
     @Override
+    @Transactional
     public Proposal approveProposal(Long id) {
         ProposalEntity proposalEntity = proposalRepository.findById(id);
         proposalEntity.setApproved(true);
