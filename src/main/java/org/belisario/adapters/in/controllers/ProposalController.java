@@ -32,4 +32,11 @@ public class ProposalController {
         return Response.ok().build();
     }
 
+    @PATCH
+    @Path("/approve/{id}")
+    public Response approveProposal(@PathParam("id") Long id) {
+        ProposalDetailsDTO proposalDetailsDTO = proposalServicePort.approveProposal(id);
+        return Response.ok(proposalDetailsDTO).build();
+    }
+
 }

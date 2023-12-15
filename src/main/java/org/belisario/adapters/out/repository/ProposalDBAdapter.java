@@ -35,4 +35,12 @@ public class ProposalDBAdapter implements ProposalDBPort {
         ProposalEntity proposalEntity = proposalRepository.findById(id);
         proposalRepository.delete(proposalEntity);
     }
+
+    @Override
+    public Proposal approveProposal(Long id) {
+        ProposalEntity proposalEntity = proposalRepository.findById(id);
+        proposalEntity.setApproved(true);
+        proposalRepository.persist(proposalEntity);
+        return ProposalEntity.toProposal(proposalEntity);
+    }
 }

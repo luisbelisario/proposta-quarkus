@@ -10,4 +10,6 @@ public interface ProposalServicePort {
     ProposalDetailsDTO createNewproposal(ProposalRequest proposalRequest);
 
     void removeProposal(Long id);
+
+    ProposalDetailsDTO approveProposal(Long id);
 }

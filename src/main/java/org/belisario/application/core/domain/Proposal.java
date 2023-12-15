@@ -2,7 +2,6 @@ package org.belisario.application.core.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Proposal {
 
@@ -19,6 +18,8 @@ public class Proposal {
     private Integer proposalValidityDays;
 
     private LocalDate created;
+
+    private Boolean approved;
 
     public Proposal() {
     }
@@ -87,5 +88,13 @@ public class Proposal {
 
     public void setCreated(LocalDate created) {
         this.created = created;
+    }
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
     }
 }

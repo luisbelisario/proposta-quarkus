@@ -36,19 +36,15 @@ public class ProposalService implements ProposalServicePort {
     @Transactional
     public ProposalDetailsDTO createNewproposal(ProposalRequest proposalRequest) {
         Proposal proposal = proposalDBPort.createProposal(proposalRequest);
-        ProposalDTO dto = ProposalDTO.builder()
-                        .proposalId(proposal.getId())
-                        .customer(proposal.getCustomer())
-                        .priceTonne(proposal.getPriceTonne())
-                        .build();
-        messagePort.sendMessage(dto);
         return ProposalDetailsDTO.builder()
                 .proposalId(proposal.getId())
+                .created(proposal.getCreated())
                 .proposalValidityDays(proposal.getProposalValidityDays())
                 .country(proposal.getCountry())
                 .priceTonne(proposal.getPriceTonne())
                 .customer(proposal.getCustomer())
                 .tonnes(proposal.getTonnes())
+                .approved(proposal.getApproved())
                 .build();
     }
 
@@ -56,5 +52,28 @@ public class ProposalService implements ProposalServicePort {
     @Transactional
     public void removeProposal(Long id) {
         proposalDBPort.deleteProposal(id);
+    }
+
+    @Override
+    public ProposalDetailsDTO approveProposal(Long id) {
+        Proposal proposal = proposalDBPort.approveProposal(id);
+        ProposalDTO dto = ProposalDTO.builder()
+                .proposalId(proposal.getId())
+                .customer(proposal.getCustomer())
+                .priceTonne(proposal.getPriceTonne())
+                .tonnes(proposal.getTonnes())
+                .approved(proposal.getApproved())
+                .build();
+        messagePort.sendMessage(dto);
+        return ProposalDetailsDTO.builder()
+                .proposalId(proposal.getId())
+                .proposalValidityDays(proposal.getProposalValidityDays())
+                .created(proposal.getCreated())
+                .country(proposal.getCountry())
+                .priceTonne(proposal.getPriceTonne())
+                .customer(proposal.getCustomer())
+                .tonnes(proposal.getTonnes())
+                .approved(proposal.getApproved())
+                .build();
     }
 }

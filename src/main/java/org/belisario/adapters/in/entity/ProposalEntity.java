@@ -35,6 +35,8 @@ public class ProposalEntity {
 
     private LocalDate created;
 
+    private Boolean approved;
+
     public static Proposal toProposal(ProposalEntity proposalEntity) {
         Proposal proposal = new Proposal();
         proposal.setId(proposalEntity.getId());
@@ -44,6 +46,7 @@ public class ProposalEntity {
         proposal.setCountry(proposalEntity.getCountry());
         proposal.setProposalValidityDays(proposalEntity.getProposalValidityDays());
         proposal.setCreated(proposalEntity.getCreated());
+        proposal.setApproved(proposalEntity.getApproved());
         return proposal;
     }
 }

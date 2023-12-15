@@ -17,7 +17,7 @@ public class MessageAdapter implements MessagePort {
     Emitter<ProposalDTO> proposalDTOEmitter;
 
     public void sendMessage(ProposalDTO proposalDTO) {
-        LOG.info("Enviando nova proposta pelo Kafka");
+        LOG.info("Nova proposta aprovada! Enviando proposta aprovada pelo Kafka!");
         proposalDTOEmitter.send(proposalDTO).toCompletableFuture().join();
     }
 }

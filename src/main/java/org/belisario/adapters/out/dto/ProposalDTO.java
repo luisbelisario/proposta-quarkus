@@ -18,4 +18,8 @@ public class ProposalDTO {
     private String customer;
 
     private BigDecimal priceTonne;
+
+    private Integer tonnes;
+
+    private Boolean approved;
 }

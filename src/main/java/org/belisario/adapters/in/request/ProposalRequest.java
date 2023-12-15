@@ -35,6 +35,7 @@ public class ProposalRequest {
         proposalEntity.setCountry(proposalRequest.getCountry());
         proposalEntity.setProposalValidityDays(proposalRequest.getProposalValidityDays());
         proposalEntity.setCreated(LocalDate.now());
+        proposalEntity.setApproved(false);
         return proposalEntity;
     }
 }

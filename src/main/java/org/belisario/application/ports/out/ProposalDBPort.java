@@ -10,4 +10,6 @@ public interface ProposalDBPort {
     Proposal createProposal(ProposalRequest proposalRequest);
 
     void deleteProposal(Long id);
+
+    Proposal approveProposal(Long id);
 }

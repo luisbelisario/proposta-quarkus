@@ -8,6 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 import org.belisario.application.core.domain.Proposal;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Jacksonized
 @Data
@@ -27,4 +28,8 @@ public class ProposalDetailsDTO {
     private String country;
 
     private Integer proposalValidityDays;
+
+    private Boolean approved;
+
+    private LocalDate created;
 }
